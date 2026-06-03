@@ -77,7 +77,7 @@ function formatDate(iso: string) {
 }
 
 function ArticlePage() {
-  const { article } = Route.useLoaderData();
+  const { article } = Route.useLoaderData() as { article: Article };
   const [tab, setTab] = useState<Tab>("figures");
 
   const tabs: { id: Tab; label: string }[] = [
