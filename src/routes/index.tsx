@@ -51,9 +51,9 @@ function HomePage() {
       </section>
 
       <main className="mx-auto max-w-3xl px-6 py-12">
-        <div className="mb-8 flex items-center justify-between gap-4">
+        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="font-serif-display text-xl font-bold">Son Makaleler</h2>
-          <div className="relative w-full max-w-xs">
+          <div className="relative w-full sm:max-w-xs">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
               value={query}

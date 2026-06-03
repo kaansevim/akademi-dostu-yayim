@@ -1,12 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { Book } from "lucide-react";
+import { useState } from "react";
+import { Book, Menu, X } from "lucide-react";
 
 export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="border-b border-border bg-background">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <Link to="/" className="flex items-baseline gap-2">
-          <span className="font-serif-display text-2xl font-bold tracking-tight">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
+        <Link to="/" className="flex items-baseline gap-2" onClick={() => setOpen(false)}>
+          <span className="font-serif-display text-xl font-bold tracking-tight sm:text-2xl">
             Akademik Dergi
           </span>
           <span className="hidden text-xs uppercase tracking-widest text-muted-foreground sm:inline">
@@ -14,7 +17,8 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="flex items-center gap-1 text-sm">
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-1 text-sm sm:flex">
           <Link
             to="/"
             className="rounded-md px-3 py-2 text-foreground transition-colors hover:bg-secondary"
@@ -37,7 +41,48 @@ export function SiteHeader() {
             Giriş Yap
           </Link>
         </nav>
+
+        {/* Mobile menu toggle */}
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Menüyü aç/kapat"
+          aria-expanded={open}
+          className="rounded-md p-2 text-foreground transition-colors hover:bg-secondary sm:hidden"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
+
+      {/* Mobile nav panel */}
+      {open && (
+        <nav className="border-t border-border px-4 py-3 sm:hidden">
+          <Link
+            to="/"
+            onClick={() => setOpen(false)}
+            className="block rounded-md px-3 py-2.5 text-sm text-foreground transition-colors hover:bg-secondary"
+            activeOptions={{ exact: true }}
+            activeProps={{ className: "font-semibold" }}
+          >
+            Makaleler
+          </Link>
+          <Link
+            to="/dashboard"
+            onClick={() => setOpen(false)}
+            className="block rounded-md px-3 py-2.5 text-sm text-foreground transition-colors hover:bg-secondary"
+            activeProps={{ className: "font-semibold" }}
+          >
+            Editör Paneli
+          </Link>
+          <Link
+            to="/auth"
+            onClick={() => setOpen(false)}
+            className="mt-2 block rounded-md bg-primary px-4 py-2.5 text-center text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Giriş Yap
+          </Link>
+        </nav>
+      )}
     </header>
   );
 }

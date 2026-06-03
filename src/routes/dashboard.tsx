@@ -48,14 +48,14 @@ function DashboardPage() {
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-lg border border-border">
-          <table className="w-full text-sm">
+        <div className="overflow-x-auto rounded-lg border border-border">
+          <table className="w-full min-w-[720px] text-sm">
             <thead className="bg-secondary/50 text-left text-xs uppercase tracking-wider text-muted-foreground">
               <tr>
-                <th className="px-4 py-3 font-medium">Gönderi No</th>
+                <th className="whitespace-nowrap px-4 py-3 font-medium">Gönderi No</th>
                 <th className="px-4 py-3 font-medium">Başlık</th>
-                <th className="px-4 py-3 font-medium">Sorumlu Yazar</th>
-                <th className="px-4 py-3 font-medium">Tarih</th>
+                <th className="whitespace-nowrap px-4 py-3 font-medium">Sorumlu Yazar</th>
+                <th className="whitespace-nowrap px-4 py-3 font-medium">Tarih</th>
                 <th className="px-4 py-3 font-medium">Durum</th>
                 <th className="px-4 py-3"></th>
               </tr>
@@ -63,12 +63,12 @@ function DashboardPage() {
             <tbody className="divide-y divide-border bg-card">
               {submissions.map((s) => (
                 <tr key={s.id} className="transition-colors hover:bg-secondary/30">
-                  <td className="px-4 py-4 font-mono text-xs text-muted-foreground">{s.id}</td>
+                  <td className="whitespace-nowrap px-4 py-4 font-mono text-xs text-muted-foreground">{s.id}</td>
                   <td className="px-4 py-4 font-medium">{s.title}</td>
-                  <td className="px-4 py-4 text-muted-foreground">{s.correspondingAuthor}</td>
-                  <td className="px-4 py-4 text-muted-foreground">{formatDate(s.submittedAt)}</td>
+                  <td className="whitespace-nowrap px-4 py-4 text-muted-foreground">{s.correspondingAuthor}</td>
+                  <td className="whitespace-nowrap px-4 py-4 text-muted-foreground">{formatDate(s.submittedAt)}</td>
                   <td className="px-4 py-4">
-                    <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusStyles[s.status]}`}>
+                    <span className={`inline-flex whitespace-nowrap rounded-full px-2.5 py-0.5 text-xs font-medium ${statusStyles[s.status]}`}>
                       {s.status}
                     </span>
                   </td>
@@ -76,7 +76,7 @@ function DashboardPage() {
                     {s.status === "Yayına Hazırlanıyor" ? (
                       <button
                         onClick={() => setModalFor(s)}
-                        className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                        className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                       >
                         <Upload className="h-3 w-3" />
                         Son Mizanpajı Yükle
