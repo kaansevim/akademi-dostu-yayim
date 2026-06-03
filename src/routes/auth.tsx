@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteHeader } from "@/components/site-chrome";
 
@@ -26,16 +26,22 @@ function OrcidIcon({ className = "" }: { className?: string }) {
 }
 
 function AuthPage() {
+  const [mode, setMode] = useState<"login" | "register">("login");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const isRegister = mode === "register";
 
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main className="mx-auto flex max-w-md flex-col px-6 py-16">
-        <h1 className="font-serif-display text-3xl font-bold">Hesabınıza giriş yapın</h1>
+        <h1 className="font-serif-display text-3xl font-bold">
+          {isRegister ? "Yeni hesap oluşturun" : "Hesabınıza giriş yapın"}
+        </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Araştırmacılar için ORCID ile tek tıkla giriş öneriyoruz.
+          Araştırmacılar için ORCID ile tek tıkla {isRegister ? "kayıt" : "giriş"} öneriyoruz.
         </p>
 
         <button
@@ -44,7 +50,7 @@ function AuthPage() {
           style={{ background: "var(--color-orcid)", color: "var(--color-orcid-foreground)" }}
         >
           <OrcidIcon className="h-6 w-6" />
-          ORCID ile Giriş Yap
+          ORCID ile {isRegister ? "Kayıt Ol" : "Giriş Yap"}
         </button>
 
         <p className="mt-2 text-xs text-muted-foreground">
@@ -63,6 +69,22 @@ function AuthPage() {
           }}
           className="space-y-4"
         >
+          {isRegister && (
+            <div>
+              <label htmlFor="name" className="mb-1 block text-sm font-medium">
+                Ad Soyad
+              </label>
+              <input
+                id="name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Dr. Ad Soyad"
+                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus:border-ring focus:ring-2 focus:ring-ring/20"
+                required
+              />
+            </div>
+          )}
           <div>
             <label htmlFor="email" className="mb-1 block text-sm font-medium">
               E-posta
@@ -94,15 +116,19 @@ function AuthPage() {
             type="submit"
             className="w-full rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Giriş Yap
+            {isRegister ? "Kayıt Ol" : "Giriş Yap"}
           </button>
         </form>
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
-          Hesabınız yok mu?{" "}
-          <a href="#" className="font-medium text-accent hover:underline">
-            Kayıt olun
-          </a>
+          {isRegister ? "Zaten hesabınız var mı?" : "Hesabınız yok mu?"}{" "}
+          <button
+            type="button"
+            onClick={() => setMode(isRegister ? "login" : "register")}
+            className="font-medium text-accent hover:underline"
+          >
+            {isRegister ? "Giriş yapın" : "Kayıt olun"}
+          </button>
         </p>
       </main>
     </div>
