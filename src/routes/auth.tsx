@@ -100,9 +100,9 @@ function AuthPage() {
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
           Hesabınız yok mu?{" "}
-          <Link to="/auth" className="font-medium text-accent hover:underline">
+          <a href="#" className="font-medium text-accent hover:underline">
             Kayıt olun
-          </Link>
+          </a>
         </p>
       </main>
     </div>

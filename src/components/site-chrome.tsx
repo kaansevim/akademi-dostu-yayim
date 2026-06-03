@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Search } from "lucide-react";
+import { Search, Book } from "lucide-react";
 
 export function SiteHeader() {
   return (
@@ -69,7 +69,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="mt-10 flex items-center gap-2 text-xs text-muted-foreground">
-          <Search className="h-3 w-3" /> ISSN 0000-0000 · DOI 10.62847/akademik
+          <Book className="h-3 w-3" /> ISSN 0000-0000 · DOI 10.62847/akademik
         </div>
       </div>
     </footer>
