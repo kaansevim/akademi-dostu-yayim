@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Search, Book } from "lucide-react";
+import { Book } from "lucide-react";
 
 export function SiteHeader() {
   return (
@@ -56,9 +56,21 @@ export function SiteFooter() {
           <div className="text-sm">
             <div className="mb-2 font-semibold">Bağlantılar</div>
             <ul className="space-y-1 text-muted-foreground">
-              <li>Yazar Rehberi</li>
-              <li>Hakem Süreci</li>
-              <li>Etik İlkeler</li>
+              <li>
+                <Link to="/yazar-rehberi" className="transition-colors hover:text-foreground">
+                  Yazar Rehberi
+                </Link>
+              </li>
+              <li>
+                <Link to="/hakem-sureci" className="transition-colors hover:text-foreground">
+                  Hakem Süreci
+                </Link>
+              </li>
+              <li>
+                <Link to="/etik-ilkeler" className="transition-colors hover:text-foreground">
+                  Etik İlkeler
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="text-sm">

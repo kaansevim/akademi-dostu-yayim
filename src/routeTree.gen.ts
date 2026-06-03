@@ -9,11 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as YazarRehberiRouteImport } from './routes/yazar-rehberi'
+import { Route as HakemSureciRouteImport } from './routes/hakem-sureci'
+import { Route as EtikIlkelerRouteImport } from './routes/etik-ilkeler'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArticleIdRouteImport } from './routes/article.$id'
 
+const YazarRehberiRoute = YazarRehberiRouteImport.update({
+  id: '/yazar-rehberi',
+  path: '/yazar-rehberi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HakemSureciRoute = HakemSureciRouteImport.update({
+  id: '/hakem-sureci',
+  path: '/hakem-sureci',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EtikIlkelerRoute = EtikIlkelerRouteImport.update({
+  id: '/etik-ilkeler',
+  path: '/etik-ilkeler',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -39,12 +57,18 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
+  '/etik-ilkeler': typeof EtikIlkelerRoute
+  '/hakem-sureci': typeof HakemSureciRoute
+  '/yazar-rehberi': typeof YazarRehberiRoute
   '/article/$id': typeof ArticleIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
+  '/etik-ilkeler': typeof EtikIlkelerRoute
+  '/hakem-sureci': typeof HakemSureciRoute
+  '/yazar-rehberi': typeof YazarRehberiRoute
   '/article/$id': typeof ArticleIdRoute
 }
 export interface FileRoutesById {
@@ -52,25 +76,74 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/dashboard': typeof DashboardRoute
+  '/etik-ilkeler': typeof EtikIlkelerRoute
+  '/hakem-sureci': typeof HakemSureciRoute
+  '/yazar-rehberi': typeof YazarRehberiRoute
   '/article/$id': typeof ArticleIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/dashboard' | '/article/$id'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/etik-ilkeler'
+    | '/hakem-sureci'
+    | '/yazar-rehberi'
+    | '/article/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/dashboard' | '/article/$id'
-  id: '__root__' | '/' | '/auth' | '/dashboard' | '/article/$id'
+  to:
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/etik-ilkeler'
+    | '/hakem-sureci'
+    | '/yazar-rehberi'
+    | '/article/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/dashboard'
+    | '/etik-ilkeler'
+    | '/hakem-sureci'
+    | '/yazar-rehberi'
+    | '/article/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
   DashboardRoute: typeof DashboardRoute
+  EtikIlkelerRoute: typeof EtikIlkelerRoute
+  HakemSureciRoute: typeof HakemSureciRoute
+  YazarRehberiRoute: typeof YazarRehberiRoute
   ArticleIdRoute: typeof ArticleIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/yazar-rehberi': {
+      id: '/yazar-rehberi'
+      path: '/yazar-rehberi'
+      fullPath: '/yazar-rehberi'
+      preLoaderRoute: typeof YazarRehberiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hakem-sureci': {
+      id: '/hakem-sureci'
+      path: '/hakem-sureci'
+      fullPath: '/hakem-sureci'
+      preLoaderRoute: typeof HakemSureciRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/etik-ilkeler': {
+      id: '/etik-ilkeler'
+      path: '/etik-ilkeler'
+      fullPath: '/etik-ilkeler'
+      preLoaderRoute: typeof EtikIlkelerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -106,6 +179,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
   DashboardRoute: DashboardRoute,
+  EtikIlkelerRoute: EtikIlkelerRoute,
+  HakemSureciRoute: HakemSureciRoute,
+  YazarRehberiRoute: YazarRehberiRoute,
   ArticleIdRoute: ArticleIdRoute,
 }
 export const routeTree = rootRouteImport
