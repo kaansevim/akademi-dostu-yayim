@@ -41,7 +41,7 @@ const svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http
         font-weight="700" fill="${FOREGROUND}">Akademik Dergi</text>
 
   <!-- subtitle -->
-  <text x="96" y="512" font-family="Arial, sans-serif" font-size="34" fill="${MUTED}">Bilim, herkesin erişimine açık olmalı.</text>
+  <text x="96" y="512" font-family="Arial, sans-serif" font-size="34" fill="${MUTED}">Bilgi, paylaşıldıkça değer kazanır.</text>
 
   <!-- footer rule + meta -->
   <line x1="96" y1="560" x2="${W - 96}" y2="560" stroke="${BORDER}" stroke-width="2"/>

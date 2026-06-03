@@ -42,10 +42,10 @@ function HomePage() {
             Açık Erişim · Hakemli · Türkçe
           </div>
           <h1 className="font-serif-display text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
-            Bilim, herkesin erişimine açık olmalı.
+            Bilgi, paylaşıldıkça değer kazanır.
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Akademik Dergi; tüm disiplinlerden Türkçe araştırmaları, ücretsiz ve etkileşimli bir okuma deneyimiyle bilim topluluğuna sunar.
+            Akademik Dergi, Türkçe araştırmaları açık erişimle buluşturur — her disiplinden çalışmaya ücretsiz ve modern bir okuma deneyimi sunar.
           </p>
         </div>
       </section>
